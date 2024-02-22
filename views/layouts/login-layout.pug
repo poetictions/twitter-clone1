@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Twitter Login
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/login.css")
+  body
+    .container
+      .row.justify-content-center.my-5
+        .col-md-6
+          .card
+            .card-header.text-center
+              h2 Twitter Login
+            .card-body
+              form(action="/login", method="post")
+                  p.errorMessage #{errorMessage}
+
+                .form-group
+                  label(for="username") Username or Email:
+                  input#username.form-control(type="text", name="username", placeholder="Enter username or email", value = username, required)
+                .form-group
+                  label(for="password") Password:
+                  input#password.form-control(type="password", name="password", placeholder="Enter password", required)
+                button.btn.btn-primary.btn-block(type="submit") Log In
+              hr
+              p.text-center
+                | New to Twitter? 
+                a(href="/register") Register here.
+                a(href="/google") Sign up with Google.

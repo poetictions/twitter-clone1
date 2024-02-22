@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Twitter Registration
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    script.
+      function checkPasswordMatch() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("password_confirm").value;
+        if (password !== confirmPassword) {
+          alert("Passwords do not match! Try again");
+          return false;
+        }
+        return true;
+      }
+  body
+    .container
+      .row.justify-content-center.my-5
+        .col-md-6
+          .card
+            .card-header.text-center
+              h2 Create an account
+            .card-body
+              form(action="/register", method="post", onsubmit="return checkPasswordMatch();")
+                
+                p.errorMessage #{errorMessage}
+                
+                .form-group
+                  label(for="fullname") Full Name:
+                  input#fullname.form-control(type="text", name="fullname", placeholder="Enter your full name", value= fullname, required)
+                .form-group
+                  label(for="email") Email:
+                  input#email.form-control(type="email", name="email", placeholder="Enter your email", value = email, required)
+                .form-group
+                  label(for="username") Username:
+                  input#username.form-control(type="text", name="username", placeholder="Enter a username", value = username, required)
+                .form-group
+                  label(for="password") Password:
+                  input#password.form-control(type="password", name="password", placeholder="Enter a password", required)
+                .form-group
+                  label(for="password_confirm") Confirm Password:
+                  input#password_confirm.form-control(type="password", name="password_confirm", placeholder="Confirm your password", required)
+                button.btn.btn-primary.btn-block(type="submit") Register
+              hr
+              p.text-center
+                | Already have an account? 
+                a(href="/login") Log in here.
